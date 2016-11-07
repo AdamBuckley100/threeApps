@@ -51,7 +51,20 @@ var NewsItem = React.createClass({
   }
  }) ;
 
-// TODO (missing component)
+var NewsList = React.createClass({
+          render: function(){
+			   {/* the postRows variable is assigned all the posts with each post's link being used as their unique key (unique identifier). */}
+              var postsRows = this.props.posts.map( newsItem =>
+			  { return <NewsItem key={newsItem.link} post={newsItem} /> });
+              return (
+                  <p>
+				  {/* display all the posts. */}
+                      {postsRows}
+                      <Form />
+                  </p>
+                ) ;
+            }
+});
 
  var HackerApp = React.createClass({
    render: function(){
@@ -60,8 +73,8 @@ var NewsItem = React.createClass({
 		  <div className="row">
 			<div className="col-md-6 col-md-offset-3">
 		 <div className="page-header">
-		 <Form />
-				 {/* TODO */}
+                       <h1>Hacker News</h1>
+                       <NewsList posts={this.props.posts}  />
 		 </div>
 		   </div>
 		  </div>
