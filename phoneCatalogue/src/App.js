@@ -1,4 +1,5 @@
     import React from 'react';
+	{/* import './App.css' */}
 
     var SelectBox = React.createClass({
       render: function(){
@@ -15,12 +16,30 @@
           }
        });
 
-        // TODO (missing component)
+       var Phone = React.createClass({
+		   render: function(){
+			   return (
+			   
+			<li class="thumbnail phone-listing">
+
+            <a href={this.props.oneSinglePhone.imageUrl} class="thumb"> 
+			
+            <img src={this.props.oneSinglePhone.imageUrl} alt={this.props.oneSinglePhone.name} /> </a>
+			   
+			<a href={this.props.oneSinglePhone.id}> {this.props.oneSinglePhone.name} </a>
+				
+            <p>{this.props.oneSinglePhone.snippet}</p>
+			
+			</li>
+			   
+			   );
+		   }
+	   });
 
        var FilteredPhoneList = React.createClass({
             render: function(){
-                var displayedPhones = this.props.phones.map(function(phone) {
-                  return <PhoneItem key={phone.id} phone={phone} /> ;
+                var displayedPhones = this.props.phones.map( phone => {
+                  return <Phone key={phone.id} oneSinglePhone={phone} /> ;
                 }) ;
                 return (
                         <div className="col-md-10">
@@ -40,8 +59,8 @@
                  <div className="container-fluid">
                    <div className="row">
                        <SelectBox />
-                       {/* TODO */}
-                  </div> 
+                       <FilteredPhoneList phones={this.props.phones}  />
+						</div>
                   </div>                   
                 </div>
               </div>
