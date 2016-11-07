@@ -25,18 +25,23 @@
           render: function(){
               return (
                       <tr >
-                         {/* TODO */}
+					   {/* display the name,address and phone number of that specific single contact. */}
+                          <td>{this.props.oneSingleContact.name}</td> 
+						  <td>{this.props.oneSingleContact.address}</td>
+						  <td>{this.props.oneSingleContact.phone_number}</td>
                       </tr>
-
                 ) ;
             }
           });
 
     var ContactList = React.createClass({
           render: function(){
-              var contactRows = null ;  // TODO
+			   {/* the contactRows variable is assigned all the contacts with each contact's address being used as their unique key. */}
+              var contactRows = this.props.contacts.map( contact =>
+			  { return <Contact key={contact.address} oneSingleContact={contact} /> });
               return (
                   <tbody >
+				  {/* display all the contacts. */}
                       {contactRows}
                       <ContactForm />
                   </tbody>
@@ -57,7 +62,7 @@
                         <th></th>
                         </tr>
                       </thead>
-                      <ContactList  />
+                      <ContactList contacts={this.props.contacts}/>
                 </table>
                 );
           }
