@@ -1,6 +1,7 @@
     import React from 'react';
     import _ from 'lodash';
     import api from './test/stubAPI';
+	import { Link } from 'react-router';
 
     var Form = React.createClass({
        getInitialState: function() {
@@ -83,7 +84,7 @@
                     onClick={this.handleVote} ></span>
                 {this.props.post.upvotes}
                 <span style={lineStyle} >{line}<span>
-                    <a href={'#/posts/' + this.props.post.id }>Comments</a>
+   <Link to={'/posts/' + this.props.post.id }>Comments</Link>
                   </span>
                 </span>
               </div>  
@@ -121,27 +122,19 @@
 		  
         render: function(){
 		
-		var list = Phones.filter(function(p) {
-        return p.name.toLowerCase().search(
-        this.state.search.toLowerCase() ) !== -1 ;
-        }.bind(this) );  
-        var filteredList = _.sortBy(list, this.state.sort) ;
+		        var posts = _.sortBy(api.getAll(), function(post) {
+                return - post.upvotes;
+             }
+          );
 			
-            return (
-              <div className="container">
-                 <div className="row">
-                    <div className="col-md-6 col-md-offset-3">
-                       <div className="page-header">
-                          <h1>Hacker News</h1>
-                             <NewsList posts={posts} 
-                                  upvoteHandler={this.incrementUpvote}  />
-								  <Form addHandler={this.addPost} />
-                       </div>
-                     </div>
-                  </div>
-                </div>
-            );
-        }
+          return (
+            <div >
+               <NewsList posts={posts} 
+                    upvoteHandler={this.incrementUpvote} />
+               <Form addHandler={this.addPost}  />
+          </div>
+          );
+      }
     });
 
     export default HackerApp;
