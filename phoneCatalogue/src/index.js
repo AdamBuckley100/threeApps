@@ -17,11 +17,19 @@
     });
 	
     ReactDOM.render( (
+	
 	<Router history={browserHistory} >
+	
 	<Route path="/" component={App}>
 	<IndexRoute component={PhoneCatalogueApp} />
 	<Route path="phones/:id" component={PhoneDetail} />
 	</Route>
+	
+	<Route path="/phones/" component={App}>
+	<IndexRoute component={PhoneCatalogueApp} />
+	<Route path="/phones/" />
+	</Route>
+	
 	</Router>
 	),
       document.getElementById('root')
