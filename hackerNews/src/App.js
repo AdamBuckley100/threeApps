@@ -120,10 +120,13 @@
           },
 		  
         render: function(){
-            var posts = _.sortBy(api.getAll(), function(post) {
-                    return - post.upvotes;
-                 }
-              );
+		
+		var list = Phones.filter(function(p) {
+        return p.name.toLowerCase().search(
+        this.state.search.toLowerCase() ) !== -1 ;
+        }.bind(this) );  
+        var filteredList = _.sortBy(list, this.state.sort) ;
+			
             return (
               <div className="container">
                  <div className="row">
