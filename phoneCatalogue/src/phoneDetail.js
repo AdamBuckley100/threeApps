@@ -3,19 +3,25 @@
 
   var Specification = React.createClass({
       render: function(){
-            var phone = this.props.phone ;             
+		  
+            var phone = this.props.phone ;   
+			
             var availability = phone.availability.map(function(avb,index) {
               return (
                        <dd key={index}>{avb}</dd>
                      ) ;
                 }) ;
+				
             var dimensions = phone.sizeAndWeight.dimensions.map(function(dim,index) {
               return (
                         <dd key={index}>{dim}</dd>
                      ) ;
                 }) ;
+				
           var display = (
+		  
               <div>
+			  
                  <ul className="specs">
                   <li >
                     <span>Availability and Networks</span>
@@ -25,6 +31,8 @@
                     </dl>
                   </li>
                   <li>
+				  
+				  
                     <span>Battery</span>
                     <dl>
                       <dt>Type</dt>
@@ -80,6 +88,7 @@
                   <li>
                     <span>Display</span>
                     <dl>
+					
                       <dt>Screen size</dt>
                       <dd>{phone.display.screenSize}</dd>
                       <dt>Screen resolution</dt>

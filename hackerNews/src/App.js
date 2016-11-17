@@ -32,7 +32,7 @@
            return (
 		   
              <form style={{marginTop: '30px'}}>
-                <h3>Add a new post</h3>
+                <h3>Add a new post (hi)</h3>
                 <div className="form-group">
                   <input type="text"
                     className="form-control" placeholder="Title"
@@ -71,18 +71,21 @@
                  fontSize: '20px', marginLeft: '10px'  };
             var cursor = { cursor: 'pointer' } ;
             var line ;
+			
             if (this.props.post.link ) {
                line = <a href= {this.props.post.link} > {/* q to ask: why can't i do a href = "http://www." + {this........link} */}
                             {this.props.post.title} </a> ;
             } else {
                line = <span>{this.props.post.title} </span> ;
             }
+			
             return (
               <div >
                 <span className="glyphicon glyphicon-thumbs-up" 
                     style={cursor} 
                     onClick={this.handleVote} ></span>
                 {this.props.post.upvotes}
+				
                 <span style={lineStyle} >{line}<span>
    <Link to={'/posts/' + this.props.post.id }>Comments</Link>
                   </span>

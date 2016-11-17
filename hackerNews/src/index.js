@@ -1,12 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import HackerApp from './App';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
-    import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-    import CommentView from './commentPage';
-
-
-
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import CommentView from './commentPage';
 
     var App = React.createClass({
       render : function() {
@@ -15,7 +13,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.css';
                <div className="row">
                   <div className="col-md-6 col-md-offset-3">
                      <div className="page-header">
-                        <h1>Hacker News</h1>
+                        <h1><u>Hacker News</b></h1>
                            {this.props.children}
                      </div>
                    </div>
